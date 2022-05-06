@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: aws-auth
+  namespace: kube-system
+data:
+  mapRoles: |
+    - rolearn: arn:aws:iam::722141136946:role/eks-blueprint-eksblueprintMastersRoleDF959839-EQSEG4JOUIT4
+      username: arn:aws:iam::722141136946:role/eks-blueprint-eksblueprintMastersRoleDF959839-EQSEG4JOUIT
+      groups:
+        - system:masters
+    - rolearn: arn:aws:iam::722141136946:role/cmdlab-role-console-breakglass/geethika.guruge@cmd.com.au
+      username: arn:aws:iam::722141136946:role/cmdlab-role-console-breakglass/geethika.guruge@cmd.com.au
+      groups:
+        - system:masters
+    - rolearn: arn:aws:iam::722141136946:role/eks-blueprint-eksblueprint1InstanceRoleBD890E24-1N8MOZUBU7L82
+      username: system:node:{{EC2PrivateDNSName}}
+      groups:
+        - system:bootstrappers
+        - system:nodes
